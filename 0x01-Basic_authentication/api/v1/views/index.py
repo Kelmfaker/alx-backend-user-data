@@ -23,3 +23,8 @@ def stats() -> str:
     from models.user import User
     stats = {}
     stats['users'] = User.count()
+
+
+@app_views.route('/api/v1/unauthorized', methods=['GET'])
+def unauthorized_endpoint():
+    abort(401)
