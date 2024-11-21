@@ -17,3 +17,11 @@ class User(Base):
     hashed_password = Column(String(250), nullable=False)
     session_id = Column(String(250), nullable=True)
     reset_token = Column(String(250), nullable=True)
+
+
+# Create an SQLite database
+engine = create_engine('sqlite:///users.db')
+Base.metadata.create_all(engine)
+# Create a session
+Session = sessionmaker(bind=engine)
+session = Session()
